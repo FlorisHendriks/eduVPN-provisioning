@@ -9,7 +9,7 @@
     	<key>Label</key>
     	<string>no.corporate.wireguard</string>
 	<key>Program</key>
-	<string>/Users/Shared/test.sh</string>
+	<string>/etc/Wireguard/startVPN.sh</string>
 	<key>RunAtLoad</key>
 	<true/>
 	<key>AbandonProcessGroup</key>

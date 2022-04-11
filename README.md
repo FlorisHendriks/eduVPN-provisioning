@@ -10,10 +10,16 @@ In this document we describe the steps in order to make this possible.
 ## Prerequisites
 * An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
 * Fully set up eduVPN server.
+* Git installed https://git-scm.com/download/win
+* Windows configuration designer installed https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab
+ 
+Here we create a PPKG file with Windows Configuration Designer. With the PPKG we can join Active Directory, install Wireguard and run a script that sets up eduVPN as a system VPN.
+## Step 1
+Clone the repository:\
+`git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
 
-There are two ways to provision, either via a ppkg file or just running the powershell script. 
-## Step 1A
-
+## Step 2
+Open Windows Configuration designer and start a new project
 
 
 # MacOS

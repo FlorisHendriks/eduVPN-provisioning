@@ -2,7 +2,7 @@
 
 In its current state, eduVPN needs client interaction in order to establish a VPN connection.
 
-It is also possible, for Windows and MacOS, to make eduVPN a system VPN that is always on via provisioning.
+It is also possible, for Windows and macOS, to make eduVPN a system VPN that is always on via provisioning.
 
 In this document we describe the steps in order to make this possible.
 

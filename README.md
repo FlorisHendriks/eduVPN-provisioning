@@ -14,7 +14,7 @@ In this document we describe the steps in order to make this possible.
 * Windows configuration designer installed https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab
 * Download a wireguard msi https://download.wireguard.com/windows-client/
  
-Here we create a PPKG file with Windows Configuration Designer. With the PPKG we can join Active Directory, install Wireguard and run a script that sets up eduVPN as a system VPN. If you already have a computer that is joined to Active Directory and has installed WireGuard you can go to step 3A.
+Here we create a PPKG file with Windows Configuration Designer. With the PPKG we can join Active Directory, install Wireguard and run a script that sets up eduVPN as a system VPN. If you already have a computer that is joined to Active Directory and has installed WireGuard you can skip these steps and go to step 3A.
 
 ## Step 1
 Clone the repository:\

@@ -11,6 +11,9 @@ In this document we describe the steps in order to make this possible.
 * An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
 * Fully set up eduVPN server.
 
+There are two ways to provision, either via a ppkg file or just running the powershell script. 
+## Step 1A
+
 
 
 # MacOS

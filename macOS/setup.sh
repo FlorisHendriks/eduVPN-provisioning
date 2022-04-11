@@ -12,12 +12,8 @@ mv startVPN.sh /etc/wireguard/
 # Install the HomeBrew package manager
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Install Wireguard-tools
-brew install wireguard-tools
-
-brew install grep
-
-brew install date
+# Install Wireguard-tools, grep and coreutils
+brew install wireguard-tools grep date
 
 # Load and execute the LaunchDaemon
 launchctl load /Library/LaunchDaemons/wireguard.plist

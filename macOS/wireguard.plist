@@ -7,7 +7,7 @@
 	<key>StandardErrorPath</key>
 	<string>/var/logs/startVPNerror.log</string>
     	<key>Label</key>
-    	<string>no.corporate.wireguard</string>
+    	<string>wireguard</string>
 	<key>Program</key>
 	<string>/etc/Wireguard/startVPN.sh</string>
 	<key>RunAtLoad</key>

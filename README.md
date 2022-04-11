@@ -34,7 +34,14 @@ Next open the profile manager web application and edit the following settings fo
 * Directory (you can skip this step if the computer is already AD joined)
 
 ![Screenshot 2022-04-11 at 13 44 13](https://user-images.githubusercontent.com/47246332/162733002-6518fa42-907c-4987-ab40-e990271b87f2.png)
-Note that we use as client ID %HardwareUUID%, this ensure us that we do not have a duplicate name in Active Directory. Other configurations, such as the hostname of the client, can be found here https://support.apple.com/en-gb/guide/deployment/dep23422775/web .
+Note that we use as client ID %SerialNumber%, this ensure us that we do not have a duplicate name in Active Directory (https://discussions.apple.com/thread/7987975). If you want to use a different client ID, such as the hostname of the client, then the syntax can be found here https://support.apple.com/en-gb/guide/deployment/dep23422775/web.
 
 After saving the profile configuration check if it is automatically pushed to the macOS client. If not download and install it manually (https://support.apple.com/en-gb/guide/profile-manager/pmdbd71ebc9/mac). 
 
+## Step 2
+Check the keychain access, you should now have a certificate with the name SERIALNUMBER.HOSTNAME. This is the machine certificate which is used to authenticate API calls in order to retrieve a VPN configuration.
+
+Clone the repository:
+`git clone `
+
+Move the 

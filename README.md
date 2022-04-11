@@ -12,15 +12,27 @@ In this document we describe the steps in order to make this possible.
 * Fully set up eduVPN server.
 * Git installed https://git-scm.com/download/win
 * Windows configuration designer installed https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab
+* Download a wireguard msi https://download.wireguard.com/windows-client/
  
 Here we create a PPKG file with Windows Configuration Designer. With the PPKG we can join Active Directory, install Wireguard and run a script that sets up eduVPN as a system VPN.
+
+## Step 1
+First open Windows Configuration designer, start a new project and specify the Computer Account settings with your infrastructure information:
+![image](https://user-images.githubusercontent.com/47246332/162793483-5b6e1f8c-2316-49dc-8757-c2c995a848ff.png)
+Make sure that the computer name has a unique name, AD does not allow duplicate names. In order to be almost certain that we have a unique name we add %RAND:5% to the computer name which generates 5 random numbers.
+
+Next go to ProvisioningCommmands/PrimaryContext/Command
+
+Enter a name for the command, e.g. wireguard.
+
+Specify the command, which uses the wireguard msi to install wireguard:
+![image](https://user-images.githubusercontent.com/47246332/162794927-89f50056-448e-45ed-abbc-826655664263.png)
+
+Finally we create another command, e.g. VpnConfig
+
 ## Step 1
 Clone the repository:\
 `git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
-
-## Step 2
-Open Windows Configuration designer and start a new project
-
 
 # MacOS
 ## Prerequisites

@@ -23,6 +23,6 @@ In this document we describe the steps in order to make this possible.
 Here we configure a profile for the macOS client. With this profile we enroll the macOS client in AD and retrieve a machine certificate via RPC.
 
 First open up the profilemanager web application
-![image](https://user-images.githubusercontent.com/47246332/162724047-c47636a3-8ed1-4800-a745-8b86d0746b0c.png)
+![image](https://user-images.githubusercontent.com/47246332/162724178-f03d496d-69ca-4ecb-a6e7-9e438cba7f27.png)
 
 

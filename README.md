@@ -51,3 +51,7 @@ Traverse to the macOS directory:\
 Run the setup.sh:\
 `sudo ./setup.sh`
 
+Check if Wireguard is up and running:\
+`sudo wg show`
+
+If it returns a config we are all set!

@@ -28,7 +28,19 @@ Enter a name for the command, e.g. wireguard.
 Specify the command, which uses the wireguard msi to install wireguard:
 ![image](https://user-images.githubusercontent.com/47246332/162794927-89f50056-448e-45ed-abbc-826655664263.png)
 
-Finally we create another command, e.g. VpnConfig
+Finally we create another command, e.g. eduvpnProvision
+![image](https://user-images.githubusercontent.com/47246332/162796810-7e4da036-5c16-49a0-aa65-b085999e0661.png)
+Where eduVPN-provisioning/windows/eduvpnProvision.ps1 can be found in the cloned repository.
+
+Go back to ProvisioningCommmands/PrimaryContext/Command. Make sure that the wireguard installer is above the eduvpnProvision command:
+![image](https://user-images.githubusercontent.com/47246332/162797244-3e62ac48-1258-4e19-b446-c743b287fdb0.png)
+
+Export the configuration and download the PPKG file using the export button above.
+
+## Step 2
+Use this PPKG file to provision multiple windows devices. You can either use it during the OOBE, or in the settings of Windows at Accounts > Access work or school > Add or remove a provisioning package. 
+
+If the computer already has installed Wireguard and joined Active directory, you can just run the eduvpnProvision.ps1 and set it up that way.
 
 ## Step 1
 Clone the repository:\

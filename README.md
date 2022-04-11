@@ -45,7 +45,8 @@ Export the configuration and download the PPKG file using the export button abov
 Use this PPKG file to provision multiple windows devices. You can either use it during the OOBE, or in the settings of Windows at Accounts > Access work or school > Add or remove a provisioning package. 
 
 ## Step 3A
-If the computer already has joined Active directory and installed WireGuard, you can just run the eduvpnProvision.ps1 on the client computer and set it up that way.
+If the computer already has joined Active directory and installed WireGuard, you can just run the eduvpnProvision.ps1 on the client computer and set it up that way. Open command line as administrator and run:\ 
+`powershell.exe -ExecutionPolicy ByPass ./eduvpnProvision.ps1`
 
 # MacOS
 ## Prerequisites

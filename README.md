@@ -26,7 +26,7 @@ First open up the my devices web application and enroll the device to macOS serv
 
 ![Screenshot 2022-04-11 at 13 17 40](https://user-images.githubusercontent.com/47246332/162730069-cd00267a-0f97-4e0b-8e18-f3b848757996.png)
 
-Next open the profile manager web application and edit the following settings for a device or group of devices (make sure that Certificate Server and Certificate Authority has the names of your own infrastructure):
+Next open the profile manager web application and edit the following settings for a device or group of devices (make sure that the Certificate Server and the Certificate Authority has the names of your own infrastructure):
 * AD certificate
 
 ![Screenshot 2022-04-11 at 13 32 43](https://user-images.githubusercontent.com/47246332/162731516-ebbc1911-e137-4344-b7ee-bccf0b7f4f03.png)

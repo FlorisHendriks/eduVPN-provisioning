@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>StandardOutPath</key>
-	<string>/var/logs/test.log</string>
+	<string>/var/logs/startVPNoutput.log</string>
 	<key>StandardErrorPath</key>
-	<string>/var/logs/test2.log</string>
+	<string>/var/logs/startVPNerror.log</string>
     	<key>Label</key>
     	<string>no.corporate.wireguard</string>
 	<key>Program</key>

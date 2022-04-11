@@ -14,9 +14,13 @@ In this document we describe the steps in order to make this possible.
 * Windows configuration designer installed https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab
 * Download a wireguard msi https://download.wireguard.com/windows-client/
  
-Here we create a PPKG file with Windows Configuration Designer. With the PPKG we can join Active Directory, install Wireguard and run a script that sets up eduVPN as a system VPN.
+Here we create a PPKG file with Windows Configuration Designer. With the PPKG we can join Active Directory, install Wireguard and run a script that sets up eduVPN as a system VPN. If you already have a computer that is joined to Active Directory and has installed WireGuard you can go to step 3A.
 
 ## Step 1
+Clone the repository:\
+`git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
+
+## Step 2
 First open Windows Configuration designer, start a new project and specify the Computer Account settings with your infrastructure information:
 ![image](https://user-images.githubusercontent.com/47246332/162793483-5b6e1f8c-2316-49dc-8757-c2c995a848ff.png)
 Make sure that the computer name has a unique name, AD does not allow duplicate names. In order to be almost certain that we have a unique name we add %RAND:5% to the computer name which generates 5 random numbers.
@@ -37,14 +41,11 @@ Go back to ProvisioningCommmands/PrimaryContext/Command. Make sure that the wire
 
 Export the configuration and download the PPKG file using the export button above.
 
-## Step 2
+## Step 3
 Use this PPKG file to provision multiple windows devices. You can either use it during the OOBE, or in the settings of Windows at Accounts > Access work or school > Add or remove a provisioning package. 
 
+## Step 3A
 If the computer already has joined Active directory and installed WireGuard, you can just run the eduvpnProvision.ps1 on the client computer and set it up that way.
-
-## Step 1
-Clone the repository:\
-`git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
 
 # MacOS
 ## Prerequisites

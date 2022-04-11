@@ -34,6 +34,7 @@ Next open the profile manager web application and edit the following settings fo
 * Directory (you can skip this step if the computer is already AD joined)
 
 ![Screenshot 2022-04-11 at 13 44 13](https://user-images.githubusercontent.com/47246332/162733002-6518fa42-907c-4987-ab40-e990271b87f2.png)
+Note that we use as client ID %HardwareUUID%, this ensure us that we do not have a duplicate name in Active Directory. Other configurations, such as the hostname of the client, can be found here https://support.apple.com/en-gb/guide/deployment/dep23422775/web .
 
-After saving 
+After saving the profile configuration check if it is automatically pushed to the macOS client. If not download and install it manually (https://support.apple.com/en-gb/guide/profile-manager/pmdbd71ebc9/mac). 
 

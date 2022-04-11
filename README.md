@@ -45,8 +45,21 @@ Check the keychain access, you should now have a certificate with the name SERIA
 Open up the terminal and clone the repository:\
 `git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
 
-Move the no.corporate.wireguard.plist file to /Library/LaunchDaemons/ in order to set up a taskschedular \
+Traverse to the macOS directory:
+`cd eduVPN-provsioning/macOS`
+
+Move the no.corporate.wireguard.plist file to /Library/LaunchDaemons/ \
 `sudo mv macOS/no.corporate.wireguard.plist /Library/LaunchDaemons/ `
 
-Create a wireguard directory only accessible by the administrator:
+Create a wireguard directory only accessible by the administrator:\
 `mkdir -m 600 /etc/wireguard`
+
+Move the startVPN.sh to the wireguard directory:\
+`sudo mv macOS/startVPN.sh /etc/wireguard/` 
+
+Install the HomeBrew package manager:\
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+Install Wireguard-tools:\
+`brew install wireguard-tools`
+

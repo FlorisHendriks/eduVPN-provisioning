@@ -8,14 +8,14 @@ In this document we describe the steps in order to make this possible.
 
 # Windows
 ## Prerequisites
-* An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://www.youtube.com/watch?v=l03jXuR6dJw
+* An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
 * Fully set up eduVPN server.
 
 
 
 # MacOS
 ## Prerequisites
-* An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://www.youtube.com/watch?v=l03jXuR6dJw
+* An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
 * Fully deployed eduVPN server.
 * macOS server with profilemanager enabled.
 

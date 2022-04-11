@@ -42,7 +42,11 @@ After saving the profile configuration check if it is automatically pushed to th
 ## Step 2
 Check the keychain access, you should now have a certificate with the name SERIALNUMBER.HOSTNAME. This is the machine certificate which is used to authenticate API calls in order to retrieve a VPN configuration.
 
-Clone the repository:\
+Open up the terminal and clone the repository:\
 `git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
 
-Move the 
+Move the no.corporate.wireguard.plist file to /Library/LaunchDaemons/ in order to set up a taskschedular \
+`sudo mv macOS/no.corporate.wireguard.plist /Library/LaunchDaemons/ `
+
+Create a wireguard directory only accessible by the administrator:
+`mkdir -m 600 /etc/wireguard`

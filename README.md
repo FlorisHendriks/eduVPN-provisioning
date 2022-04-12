@@ -51,6 +51,11 @@ If the computer already has joined Active directory and installed WireGuard, you
 Open command line as administrator and run:\
 `powershell.exe -ExecutionPolicy ByPass ./eduvpnProvision.ps1`
 
+## Step 4
+You can check if the VPN tunnel is running using ipconfig in the cmd:
+![image](https://user-images.githubusercontent.com/47246332/162982834-6a201fbf-18a5-4695-9ad7-111759df28c1.png)
+
+
 # MacOS
 ## Prerequisites
 * An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)

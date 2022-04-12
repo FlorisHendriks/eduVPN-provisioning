@@ -9,9 +9,6 @@ mkdir -m 600 /etc/wireguard/
 # Move the startVPN.sh to the wireguard directory
 mv startVPN.sh /etc/wireguard/
 
-# Install the HomeBrew package manager
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
 # Install Wireguard-tools, grep and coreutils
 brew install wireguard-tools grep date
 

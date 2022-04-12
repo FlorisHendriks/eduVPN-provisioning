@@ -94,7 +94,7 @@ Traverse to the macOS directory:\
 `cd eduVPN-provisioning/macOS`
 
 Run the setup.sh:\
-`sudo sh setup.sh`
+`sudo ./setup.sh`
 
 Check if Wireguard is up and running:\
 `sudo wg show`

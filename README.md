@@ -52,8 +52,8 @@ Open command line as administrator and run:\
 `powershell.exe -ExecutionPolicy ByPass ./eduvpnProvision.ps1`
 
 ## Step 4
-You can check if the VPN tunnel is running using ipconfig in the cmd:
-![image](https://user-images.githubusercontent.com/47246332/162982834-6a201fbf-18a5-4695-9ad7-111759df28c1.png)
+You can check if the VPN tunnel is running by using the command `wg show` in an administrator command prompt:
+![image](https://user-images.githubusercontent.com/47246332/162983449-78ef667a-08ff-499b-ac8e-e6f941c1d10e.png)
 
 
 # MacOS

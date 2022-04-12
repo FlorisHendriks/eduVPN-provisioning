@@ -56,6 +56,7 @@ Open command line as administrator and run:\
 * An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
 * Fully deployed eduVPN server.
 * macOS server with profilemanager enabled.
+* Git installed.
 
 ## Step 1
 Here we configure a profile for the macOS client. With this profile we enroll the macOS client in AD and retrieve a machine certificate via RPC.

@@ -84,6 +84,9 @@ Check the keychain access, you should now have a certificate with the name SERIA
 Open up the terminal and clone the repository:\
 `git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
 
+Install the HomeBrew package manager:\
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
 Traverse to the macOS directory:\
 `cd eduVPN-provisioning/macOS`
 

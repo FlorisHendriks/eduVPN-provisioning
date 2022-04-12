@@ -21,7 +21,7 @@ Clone the repository:\
 `git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
 
 ## Step 2
-First open Windows Configuration designer and either start a new project and specify the Computer Account settings with information from your infrastructure or import the example settings from eduVPN-provisioning/windowsConfigurationDesigner/exampleProject.icdproj:
+First open Windows Configuration designer and either import the example settings from eduVPN-provisioning/windowsConfigurationDesigner/exampleProject.icdproj or start a new project and specify tbe following settings:
 
 ![image](https://user-images.githubusercontent.com/47246332/162922774-0fd9081e-56bc-4435-aff6-b07b8630c01d.png)
 Make sure that the computer name has a unique name, AD does not allow duplicate names. In order to be almost certain that we have a unique name we add %RAND:5% to the computer name which generates 5 random numbers.

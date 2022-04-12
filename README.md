@@ -61,7 +61,7 @@ Open command line as administrator and run:\
 ## Step 1
 Here we configure a profile for the macOS client. With this profile we enroll the macOS client in AD and retrieve a machine certificate via RPC.
 
-First open up the my devices web application and enroll the device to macOS server.
+First open the my devices web application and enroll the device to macOS server.
 
 ![Screenshot 2022-04-11 at 13 17 40](https://user-images.githubusercontent.com/47246332/162730069-cd00267a-0f97-4e0b-8e18-f3b848757996.png)
 

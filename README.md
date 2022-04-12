@@ -27,16 +27,17 @@ Make sure that the computer name has a unique name, AD does not allow duplicate 
 
 Next go to ProvisioningCommmands/PrimaryContext/Command
 
-Enter a name for the command, e.g. wireguard.
+Here we create an installation package for WireGuard. 
+Enter a name for this command, e.g. Wireguard.
 
-Specify the command, which uses the wireguard msi to install wireguard:
+Specify the command, which uses the WireGuard msi to install WireGuard:
 ![image](https://user-images.githubusercontent.com/47246332/162794927-89f50056-448e-45ed-abbc-826655664263.png)
 
-Finally we create another command, e.g. eduvpnProvision
+Finally we create another command, which provisions eduVPN. Enter a name for this command e.g. eduvpnProvision
 ![image](https://user-images.githubusercontent.com/47246332/162796810-7e4da036-5c16-49a0-aa65-b085999e0661.png)
 Where eduVPN-provisioning/windows/eduvpnProvision.ps1 can be found in the cloned repository.
 
-Go back to ProvisioningCommmands/PrimaryContext/Command. Make sure that the wireguard installer is above the eduvpnProvision command:
+Go back to ProvisioningCommmands/PrimaryContext/Command. Make sure that the WireGuard installer is above the eduvpnProvision command:
 ![image](https://user-images.githubusercontent.com/47246332/162797244-3e62ac48-1258-4e19-b446-c743b287fdb0.png)
 
 Export the configuration and download the PPKG file using the export button above.

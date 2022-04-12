@@ -87,8 +87,8 @@ Open up the terminal and clone the repository:\
 Install the HomeBrew package manager:\
 `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
-Install Wireguard-tools, grep and date:\
-`brew install wireguard-tools grep date`
+Install Wireguard-tools, grep and coreutils:\
+`brew install wireguard-tools grep coreutils`
 
 Traverse to the macOS directory:\
 `cd eduVPN-provisioning/macOS`

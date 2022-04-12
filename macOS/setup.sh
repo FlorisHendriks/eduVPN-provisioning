@@ -9,5 +9,8 @@ mkdir -m 600 /etc/wireguard/
 # Move the startVPN.sh to the wireguard directory
 mv startVPN.sh /etc/wireguard/
 
+# Change the permissions of the wireguard launch daemon
+sudo chown root:wheel /Library/LaunchDaemons/wireguard.plist
+
 # Load and execute the LaunchDaemon
 launchctl load /Library/LaunchDaemons/wireguard.plist

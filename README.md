@@ -112,7 +112,7 @@ If it returns a config we are all set!
 
 
 # Troubleshooting
-Here I document all my issues I encountered while discovering how to setup eduVPN provisioning and what I did to resolve them.
+Here I document all my issues I encountered while exploring how to setup eduVPN provisioning and what I did to resolve them.
 ## Machine certificates are not pushed to the clients
 Check the Active Directory Certificate Services
 ![image](https://user-images.githubusercontent.com/47246332/163173607-c8409f7d-faab-4929-926e-75c32a21ed0f.png)

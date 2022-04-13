@@ -7,7 +7,7 @@ It is also possible, for Windows and macOS, to make eduVPN a system VPN that is 
 In this document we describe the steps in order to make this possible.
 
 ```diff
-! Currently we only support the WireGuard protocol
+Currently we only support the WireGuard protocol
 ```
 
 # Windows Cloud based provisioning

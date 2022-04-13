@@ -6,7 +6,11 @@ It is also possible, for Windows and macOS, to make eduVPN a system VPN that is 
 
 In this document we describe the steps in order to make this possible.
 
-# Windows
+# Windows Cloud based provisioning
+If you make use of Microsoft Endpoint Manager (previous Microsoft Intune) then this provision method might fit better within your IT infrastructure.
+![image](https://user-images.githubusercontent.com/47246332/163172248-0841dd7d-ff6e-495a-9a5c-ce53dbff9760.png)
+
+# Windows On-Premise based provisioning
 ## Prerequisites
 * An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
 * Fully set up eduVPN server.
@@ -105,3 +109,4 @@ Check if Wireguard is up and running:\
 `sudo wg show`
 
 If it returns a config we are all set!
+

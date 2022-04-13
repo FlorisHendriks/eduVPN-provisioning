@@ -6,7 +6,9 @@ It is also possible, for Windows and macOS, to make eduVPN a system VPN that is 
 
 In this document we describe the steps in order to make this possible.
 
-<mark style="background-color: lightblue">Currently we only support WireGuard</mark>
+```diff
+! Currently we only support the WireGuard protocol
+```
 
 # Windows Cloud based provisioning
 If you make use of Microsoft Endpoint Manager (previous Microsoft Intune) then this provision method might fit better within your IT infrastructure.

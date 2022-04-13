@@ -60,7 +60,7 @@ You can check if the VPN tunnel is running by using the command `wg show` in an 
 ![image](https://user-images.githubusercontent.com/47246332/162983449-78ef667a-08ff-499b-ac8e-e6f941c1d10e.png)
 
 
-# MacOS
+# MacOS On-premise based provisioning
 ## Prerequisites
 * An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
 * Fully deployed eduVPN server.

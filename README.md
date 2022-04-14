@@ -124,4 +124,7 @@ Here I document all my issues I encountered while exploring how to setup eduVPN 
 Check the Active Directory Certificate Services
 ![image](https://user-images.githubusercontent.com/47246332/163173607-c8409f7d-faab-4929-926e-75c32a21ed0f.png)
 
+## My provisioning package gives the error 0x800700b7.
+The device is probably already enrolled in (Azure) Active Directory. Create the PPKG without configuring the AD join.
+
 ## MacOS doesn't accept the MDM 

@@ -54,9 +54,7 @@ Use this PPKG file to provision multiple windows devices. You can either use it 
 
 ### Optional: Bulk deploy the PPKG with Microsoft Endpoint manager (intune)
 You can also deploy the PPKG by using the powershell script functionality of the Microsoft Endpoint manager.
-
-Create a powershell script with the content: `powershell.exe “Add-ProvisioningPackage -Path “XXXXX.ppkg” -ForceInstall -QuietInstall”`
-
+Learn [here](https://www.anoopcnair.com/deploy-ppkg-files-with-intune/) how to do this.
 
 
 ## Step 3A

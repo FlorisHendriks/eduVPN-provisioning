@@ -50,7 +50,14 @@ Go back to ProvisioningCommmands/PrimaryContext/Command. Make sure that the Wire
 Export the configuration and download the PPKG file using the export button above.
 
 ## Step 3
-Use this PPKG file to provision multiple windows devices. You can either use it during the OOBE, or in the settings of Windows at Accounts > Access work or school > Add or remove a provisioning package. 
+Use this PPKG file to provision multiple windows devices. You can either use it during the OOBE, or in the settings of Windows at Accounts > Access work or school > Add or remove a provisioning package.
+
+### Optional: Bulk deploy the PPKG with Microsoft Endpoint manager (intune)
+You can also deploy the PPKG by using the powershell script functionality of the Microsoft Endpoint manager.
+
+Create a powershell script with the content: `powershell.exe “Add-ProvisioningPackage -Path “XXXXX.ppkg” -ForceInstall -QuietInstall”`
+
+
 
 ## Step 3A
 If the computer already has joined Active directory and installed WireGuard, you can just run the eduvpnProvision.ps1 on the client computer and set it up that way. 

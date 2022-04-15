@@ -8,11 +8,7 @@ In this document we describe the steps in order to make this possible.
 
 :warning: Currently we only support the WireGuard protocol
 
-# Windows Cloud based provisioning
-If you make use of Microsoft Endpoint Manager (previous Microsoft Intune) then this provision method might fit better within your IT infrastructure.
-![image](https://user-images.githubusercontent.com/47246332/163172248-0841dd7d-ff6e-495a-9a5c-ce53dbff9760.png)
-
-# Windows On-premise based provisioning
+# Windows
 ## Prerequisites
 * An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
 * Fully set up eduVPN server.
@@ -50,7 +46,8 @@ Go back to ProvisioningCommmands/PrimaryContext/Command. Make sure that the Wire
 Export the configuration and download the PPKG file using the export button above.
 
 ## Step 3
-Use this PPKG file to provision multiple windows devices. You can either use it during the OOBE, or in the settings of Windows at Accounts > Access work or school > Add or remove a provisioning package.
+Use this PPKG file to provision multiple windows devices. You can either use it during the OOBE, in the settings of Windows at Accounts > Access work or school > Add or remove a provisioning package or in an elevated command prompt:\
+
 
 ### Optional: Bulk deploy the PPKG with Microsoft Endpoint manager (intune)
 You can also deploy the PPKG by using the powershell script functionality of the Microsoft Endpoint manager.
@@ -67,7 +64,7 @@ You can check if the VPN tunnel is running by using the command `wg show` in an 
 ![image](https://user-images.githubusercontent.com/47246332/162983449-78ef667a-08ff-499b-ac8e-e6f941c1d10e.png)
 
 
-# MacOS On-premise based provisioning
+# MacOS
 ## Prerequisites
 * An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
 * Fully deployed eduVPN server.

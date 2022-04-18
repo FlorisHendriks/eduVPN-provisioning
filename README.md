@@ -19,8 +19,6 @@ Down below we describe the steps in order to make this possible.
 
 **Note:** Currently we only support Macos/Windows and the WireGuard protocol.
 
-This was written by Floris Hendriks during an internship at SURF.
-
 # Windows
 ## Prerequisites
 * An AD Windows server with Active Directory Certificate Services installed. [Make sure that automatic enrollment of computer certificates via GPO is enabled](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11))

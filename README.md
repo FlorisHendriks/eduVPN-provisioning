@@ -14,7 +14,8 @@ In this document we are going to solve these limitations by making eduVPN a syst
 
 We realize this by using Active Directory Certificate Services with automatic enrollment enabled so that every joined device retrieves a machine certificate. We use that certificate to authenticate an API call where we retrieve a WireGuard config. Next we install the WireGuard tunnel with that config. To visualise this:
 
-![image](https://user-images.githubusercontent.com/47246332/163763513-4c12f662-e567-429e-a67e-d99a9b9bfb84.png)
+![image](https://user-images.githubusercontent.com/47246332/163777310-1d9220f0-d12a-4698-ba60-fae8465574cf.png)
+
 
 
 Down below we describe the steps in order to make this possible.

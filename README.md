@@ -1,12 +1,25 @@
 # Introduction
 
+eduVPN is used to provide (large groups of) users a secure way to access the internet and their organisational resources. The goal of eduVPN is to replace typical closed-source VPNs with an open-source validated alternative that works seamlessly with an organisational identity environment.
+
+Currently, eduVPN authorization works as follows: first, a user installs the eduVPN app on its computer. The user then searches for his or her organisation which opens a web browser to the organisation's Identity Provider. The Identity Provider verifies the credentials of the user and if correct, sends back an OAuth token. With that OAuth token, the client application requests an OpenVPN or WireGuard configuration file. When the client receives a configuration file back, it authenticates to either the OpenVPN or WireGuard server and establishes the connection.
+
+![image](https://user-images.githubusercontent.com/47246332/163761407-4f18df06-8300-4fe9-b10d-d640234b96c4.png)
+
+One limitation that this authorization protocol has is that the VPN connection is established only after a user logs in to Windows. Often, organisations only allow clients through a VPN connection to communicate with their Active Directory in order to mitigate potential cyber security risks. However, when a user wants to log in with its user credentials for the first time, it needs to be able to communicate with Active Directory to verify those credentials. But the VPN only starts after a user logs in, so in this case the user can't log into its computer. We therefore need to find a way to establish a VPN connection before a user logs in to Windows.
+
+Another limitation is that some organisations have set the expiration date of the configuration files to less than a day, for security reasons. As a result, eduVPN users dislike the fact that they need to log in each day. Moreover, even if the configurations have a longer expiration date, there is still user interaction needed to establish the vpn connection. This is an extra threshold before a user can use organisational resources. 
+
+With a Microsoft PKI and provisioning we are going to solve these limitations.
+
+
 In its current state, eduVPN needs client interaction in order to establish a VPN connection.
 
 It is also possible, for Windows and macOS, to make eduVPN a system VPN that is always on via provisioning.
 
 In this document we describe the steps in order to make this possible.
 
-:warning: Currently we only support the WireGuard protocol
+**Note:** Currently we only support the WireGuard protocol
 
 # Windows
 ## Prerequisites
@@ -127,3 +140,7 @@ Check the Active Directory Certificate Services
 The device is probably already enrolled in (Azure) Active Directory. Create the PPKG without configuring the AD join.
 
 ## MacOS doesn't accept the MDM 
+
+# Future work
+* Add support for OpenVPN
+* Make a UI for selecting different profiles

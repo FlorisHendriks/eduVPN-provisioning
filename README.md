@@ -10,10 +10,12 @@ One limitation that this authorization protocol has is that the VPN connection i
 
 Another limitation is that some organisations have set the expiration date of the configuration files to less than a day, for security reasons. As a result, eduVPN users dislike the fact that they need to log in each day. Moreover, even if the configurations have a longer expiration date, there is still user interaction needed to establish the vpn connection. This is an extra threshold before a user can use organisational resources. 
 
-In this document we are going to solve these limitations by making eduVPN a system VPN that is always on via provisioning.
-We realize this by using Active Directory Certificate Services. Every joined device gets a machine certificate. We use that certificate to authenticate an API call where we retrieve a WireGuard config. Next we install the WireGuard tunnel with that config. To visualise this:
+In this document we are going to solve these limitations by making eduVPN a system VPN that is always on via provisioning . W
+
+We realize this by using Active Directory Certificate Services with automatic enrollment enabled so that every joined device retrieves a machine certificate. We use that certificate to authenticate an API call where we retrieve a WireGuard config. Next we install the WireGuard tunnel with that config. To visualise this:
 
 ![image](https://user-images.githubusercontent.com/47246332/163763513-4c12f662-e567-429e-a67e-d99a9b9bfb84.png)
+
 
 Down below we describe the steps in order to make this possible.
 
@@ -26,8 +28,9 @@ Down below we describe the steps in order to make this possible.
 * [Git installed](https://git-scm.com/download/win)
 * [Windows configuration designer installed](https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab)
 * [Download a wireguard msi](https://download.wireguard.com/windows-client/)
+* A Windows client with Windows 10/11
  
-Here we create a PPKG file with Windows Configuration Designer. With the PPKG we can join Active Directory, install Wireguard and run a script that sets up eduVPN as a system VPN.
+Here we create a Provisioning Package ([PPKG](https://docs.microsoft.com/en-us/windows/configuration/provisioning-packages/provisioning-packages)) file with Windows Configuration Designer. With the PPKG we can join Active Directory, install Wireguard and run a script that sets up eduVPN as a system VPN.
 
 ## Step 1
 Clone the repository:\
@@ -79,10 +82,11 @@ You can check if the VPN tunnel is running by using the command `wg show` in an 
 
 # MacOS
 ## Prerequisites
-* An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
+* [An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11))
 * Fully deployed eduVPN server.
 * macOS server with profilemanager enabled.
 * Git installed.
+* A MacOS client with Monterey installed.
 
 ## Step 1
 Here we configure a profile for the macOS client. With this profile we enroll the macOS client in AD and retrieve a machine certificate via RPC.
@@ -133,6 +137,9 @@ Here I document all my issues I encountered while exploring how to setup eduVPN 
 
 ## My provisioning package gives the error 0x800700b7.
 The device is probably already enrolled in (Azure) Active Directory. Create the PPKG without configuring the AD join.
+
+# Design choices
+* Use of 
 
 # Future work
 * Add support for OpenVPN

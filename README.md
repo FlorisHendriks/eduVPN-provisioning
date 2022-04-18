@@ -2,25 +2,25 @@
 
 eduVPN is used to provide (large groups of) users a secure way to access the internet and their organisational resources. The goal of eduVPN is to replace typical closed-source VPNs with an open-source validated alternative that works seamlessly with an organisational identity environment.
 
-Currently, eduVPN authorization works as follows: first, a user installs the eduVPN app on its computer. The user then searches for his or her organisation which opens a web browser to the organisation's Identity Provider. The Identity Provider verifies the credentials of the user and if correct, sends back an OAuth token. With that OAuth token, the client application requests an OpenVPN or WireGuard configuration file. When the client receives a configuration file back, it authenticates to either the OpenVPN or WireGuard server and establishes the connection.
+Currently, eduVPN authorization works as follows: first, a user installs the eduVPN client on a supported device. When starting the client, the user searches for his or her organisation which opens a web page to the organisation's Identity Provider. The Identity Provider verifies the credentials of the user and if correct, sends back an OAuth token. With that OAuth token, the client application requests an OpenVPN or WireGuard configuration file. When the client receives a configuration file and client certificate back, it authenticates to either the OpenVPN or WireGuard server and establishes the connection (see the Figure below for the protocol overview).
 
 ![image](https://user-images.githubusercontent.com/47246332/163761407-4f18df06-8300-4fe9-b10d-d640234b96c4.png)
 
-One limitation that this authorization protocol has is that the VPN connection is established only after a user logs in to Windows. Often, organisations only allow clients through a VPN connection to communicate with their Active Directory in order to mitigate potential cyber security risks. However, when a user wants to log in with its user credentials for the first time, it needs to be able to communicate with Active Directory to verify those credentials. But the VPN only starts after a user logs in, so in this case the user can't log into its computer. We therefore need to find a way to establish a VPN connection before a user logs in to Windows.
+One limitation that this authorization protocol has is that the VPN connection is established only after a user logs in to Windows. Often, organisations only allow clients through a VPN connection to communicate with their Active Directory in order to mitigate potential cyber security risks. However, when a user wants to log in with its user credentials for the first time, it needs to be able to communicate with Active Directory to verify those credentials. But the VPN only starts after a user logs in, so in this case the user can't log into its device. We therefore need to find a way to establish a VPN connection before a user logs in to Windows.
 
 Another limitation is that some organisations have set the expiration date of the configuration files to less than a day, for security reasons. As a result, eduVPN users dislike the fact that they need to log in each day. Moreover, even if the configurations have a longer expiration date, there is still user interaction needed to establish the vpn connection. This is an extra threshold before a user can use organisational resources. 
 
-In this document we are going to solve these limitations by making eduVPN a system VPN that is always on via provisioning . W
+In this document we are going to solve these limitations by making eduVPN a system VPN that is always on via provisioning. This means that instead of that the user interacts with the client to retrieve a configuration file we are going to do that via a script that runs in the background.
 
 We realize this by using Active Directory Certificate Services with automatic enrollment enabled so that every joined device retrieves a machine certificate. We use that certificate to authenticate an API call where we retrieve a WireGuard config. Next we install the WireGuard tunnel with that config. To visualise this:
 
 ![image](https://user-images.githubusercontent.com/47246332/163777310-1d9220f0-d12a-4698-ba60-fae8465574cf.png)
 
 **Design choices:**
-* **Active Directory Certificate Services**: We chose to use the Microsoft PKI since that is broadly used by large organisations. Morover the Windows PKI has nice integration with the Windows Certificate Store and MacOS keychain. Of course you can use your own PKI but note that you need to tweak some code in the script.
+* **Active Directory Certificate Services**: We chose to use the Microsoft PKI since that is broadly used by large organisations. Moreover, the Windows PKI has nice integration with the Windows Certificate Store. Of course you can use your own PKI but note that you need to tweak some code in the script.
 * **MacOS/Windows**: Most organizations that give their employees a managed device have either Windows or MacOS. We therefore focused on supporting Windows and MacOS. For future work an intern might extend this support to Linux.
 
-Down below we describe the steps in order to make this possible.
+Down below we describe the steps in order to make eduVPN provisioning possible.
 
 **Note:** Currently we only support Macos/Windows and the WireGuard protocol.
 

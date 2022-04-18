@@ -17,7 +17,9 @@ We realize this by using Active Directory Certificate Services. Every joined dev
 
 Down below we describe the steps in order to make this possible.
 
-**Note:** Currently we only support the WireGuard protocol and Macos/Windows
+This was written by Floris Hendriks during an internship at SURF.
+
+**Note:** Currently we only support Macos/Windows and the WireGuard protocol.
 
 # Windows
 ## Prerequisites
@@ -34,7 +36,7 @@ Clone the repository:\
 `git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
 
 ## Step 2
-First open Windows Configuration designer and either import the example settings from eduVPN-provisioning/windowsConfigurationDesigner/exampleProject.icdproj or start a new project and specify the settings to join Active Directory:
+Open Windows Configuration designer and either import the example settings from eduVPN-provisioning/windowsConfigurationDesigner/exampleProject.icdproj or start a new project and specify the settings to join Active Directory:
 
 ![image](https://user-images.githubusercontent.com/47246332/162922774-0fd9081e-56bc-4435-aff6-b07b8630c01d.png)
 If the computer already is joined to (Azure) AD you **must** not specify these settings, the provision package will not work if you do.

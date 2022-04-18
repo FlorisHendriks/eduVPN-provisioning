@@ -19,7 +19,7 @@ We realize this by using Active Directory Certificate Services with automatic en
 **Design choices:**
 * **Active Directory Certificate Services**: We chose to use the Microsoft PKI since that is broadly used by large organisations. Moreover, the Windows PKI has nice integration with the Windows Certificate Store. Of course you can use your own PKI but note that you need to tweak some code in the script.
 * **MacOS/Windows**: Most organizations that give their employees a managed device have either Windows or MacOS. We therefore focused on supporting Windows and MacOS. For future work an intern might extend this support to Linux.
-* **WireGuard/OpenVPN**: Authentication of Wireguard is based on 
+* **WireGuard/OpenVPN**: When trying to implement eduVPN provisioning we looked mainly at supporting WireGuard due to time constraints. If there is time left we will add support for this.
 
 Down below we describe the steps in order to make eduVPN provisioning possible.
 
@@ -137,7 +137,7 @@ If it returns a config we are all set!
 
 
 # Troubleshooting
-Here I document all my issues I encountered while exploring how to setup eduVPN provisioning and what I did to resolve them.
+Here I document all my issues we encountered while exploring how to setup eduVPN provisioning and what I did to resolve them.
 
 ## My provisioning package gives the error 0x800700b7.
 The device is probably already enrolled in (Azure) Active Directory. Create the PPKG without configuring the AD join.

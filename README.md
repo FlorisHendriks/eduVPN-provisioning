@@ -10,16 +10,16 @@ One limitation that this authorization protocol has is that the VPN connection i
 
 Another limitation is that some organisations have set the expiration date of the configuration files to less than a day, for security reasons. As a result, eduVPN users dislike the fact that they need to log in each day. Moreover, even if the configurations have a longer expiration date, there is still user interaction needed to establish the vpn connection. This is an extra threshold before a user can use organisational resources. 
 
-With a Microsoft PKI and provisioning we are going to solve these limitations.
+In this document we are going to solve these limitations by making eduVPN a system VPN that is always on via provisioning.
+We realize this by using Active Directory Certificate Services. Every joined device gets a machine certificate. We use that certificate to authenticate an API call where we retrieve a WireGuard config. Next we install the WireGuard tunnel with that config. To visualise this:
 
+![image](https://user-images.githubusercontent.com/47246332/163763513-4c12f662-e567-429e-a67e-d99a9b9bfb84.png)
 
-In its current state, eduVPN needs client interaction in order to establish a VPN connection.
-
-It is also possible, for Windows and macOS, to make eduVPN a system VPN that is always on via provisioning.
-
-In this document we describe the steps in order to make this possible.
+Down below we describe the steps in order to make this possible.
 
 **Note:** Currently we only support the WireGuard protocol
+
+
 
 # Windows
 ## Prerequisites

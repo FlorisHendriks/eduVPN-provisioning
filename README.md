@@ -17,9 +17,7 @@ We realize this by using Active Directory Certificate Services. Every joined dev
 
 Down below we describe the steps in order to make this possible.
 
-**Note:** Currently we only support the WireGuard protocol
-
-
+**Note:** Currently we only support the WireGuard protocol and Macos/Windows
 
 # Windows
 ## Prerequisites
@@ -132,14 +130,9 @@ If it returns a config we are all set!
 
 # Troubleshooting
 Here I document all my issues I encountered while exploring how to setup eduVPN provisioning and what I did to resolve them.
-## Machine certificates are not pushed to the clients
-Check the Active Directory Certificate Services
-![image](https://user-images.githubusercontent.com/47246332/163173607-c8409f7d-faab-4929-926e-75c32a21ed0f.png)
 
 ## My provisioning package gives the error 0x800700b7.
 The device is probably already enrolled in (Azure) Active Directory. Create the PPKG without configuring the AD join.
-
-## MacOS doesn't accept the MDM 
 
 # Future work
 * Add support for OpenVPN

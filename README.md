@@ -17,7 +17,7 @@ We realize this by using Active Directory Certificate Services with automatic en
 ![image](https://user-images.githubusercontent.com/47246332/163777310-1d9220f0-d12a-4698-ba60-fae8465574cf.png)
 
 **Design choices:**
-* **Active Directory Certificate Services**: We chose to use the Microsoft PKI since that is broadly used by large organisations. Morover the Windows PKI has nice integration with the Windows Certificate Store and MacOS keychain. Ofcourse you can use your own PKI but note that you need to tweak some code in the script.
+* **Active Directory Certificate Services**: We chose to use the Microsoft PKI since that is broadly used by large organisations. Morover the Windows PKI has nice integration with the Windows Certificate Store and MacOS keychain. Of course you can use your own PKI but note that you need to tweak some code in the script.
 * **MacOS/Windows**: Most organizations that give their employees a managed device have either Windows or MacOS. We therefore focused on supporting Windows and MacOS. For future work an intern might extend this support to Linux.
 
 Down below we describe the steps in order to make this possible.

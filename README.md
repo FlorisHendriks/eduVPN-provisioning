@@ -17,9 +17,9 @@ We realize this by using Active Directory Certificate Services. Every joined dev
 
 Down below we describe the steps in order to make this possible.
 
-This was written by Floris Hendriks during an internship at SURF.
-
 **Note:** Currently we only support Macos/Windows and the WireGuard protocol.
+
+This was written by Floris Hendriks during an internship at SURF.
 
 # Windows
 ## Prerequisites

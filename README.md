@@ -23,9 +23,9 @@ This was written by Floris Hendriks during an internship at SURF.
 
 # Windows
 ## Prerequisites
-* An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
+* An AD Windows server with Active Directory Certificate Services installed. Make sure that [automatic enrollment of computer certificates via GPO is enabled] https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11)
 * Fully set up eduVPN server.
-* Git installed https://git-scm.com/download/win
+* [Git installed] https://git-scm.com/download/win
 * Windows configuration designer installed https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab
 * Download a wireguard msi https://download.wireguard.com/windows-client/
  

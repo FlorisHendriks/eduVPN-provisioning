@@ -28,7 +28,7 @@ Down below we describe the steps in order to make eduVPN provisioning possible.
 # Windows
 ## Prerequisites
 * An AD Windows server with Active Directory Certificate Services installed. [Make sure that automatic enrollment of computer certificates via GPO is enabled](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11))
-* Fully set up eduVPN server.
+* [Fully deployed forked eduVPN server](https://github.com/FlorisHendriks98/provisionPackage)
 * [Git installed](https://git-scm.com/download/win)
 * [Windows configuration designer installed](https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab)
 * [Download a WireGuard msi](https://download.wireguard.com/windows-client/)
@@ -87,7 +87,7 @@ You can check if the VPN tunnel is running by using the command `wg show` in an 
 # MacOS
 ## Prerequisites
 * [An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11))
-* Fully deployed eduVPN server.
+* [Fully deployed forked eduVPN server](https://github.com/FlorisHendriks98/provisionPackage).
 * [macOS server with profilemanager enabled](https://apps.apple.com/us/app/macos-server/id883878097?mt=12).
 * Git installed.
 * A MacOS client with Monterey installed.

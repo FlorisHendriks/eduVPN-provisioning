@@ -6,7 +6,7 @@ Currently, eduVPN authorization works as follows: first, a user installs the edu
 
 ![image](https://user-images.githubusercontent.com/47246332/163787923-e73a3749-ee0f-4bf1-82f0-cb67e52a3b37.png)
 
-One limitation that this authorization protocol has is that the VPN connection is established only after a user logs in to Windows. Often, organisations only allow clients through a VPN connection to communicate with their Active Directory in order to mitigate potential cyber security risks. However, when a user wants to log in with its user credentials for the first time, it needs to be able to communicate with Active Directory to verify those credentials. But the VPN only starts after a user logs in, so in this case the user can't log into its device. We therefore need to find a way to establish a VPN connection before a user logs in to Windows.
+A limitation of this authorization protocol is that the VPN connection can only be established after a user logs in to the device. Often, organisations only allow Windows clients through a VPN connection to communicate with their Active Directory in order to mitigate potential cyber security risks. However, when a user wants to log in with its user credentials for the first time, it needs to be able to communicate with Active Directory to verify those credentials. But the VPN only starts after a user logs in, so in this case the user can't log into its device. We therefore need to find a way to establish a VPN connection before a user logs in to Windows.
 
 Another limitation is that some organisations have set the expiration date of the configuration files to less than a day, for security reasons. As a result, eduVPN users dislike the fact that they need to log in each day. Moreover, even if the configurations have a longer expiration date, there is still user interaction needed to establish the vpn connection. This is an extra threshold before a user can use organisational resources. 
 
@@ -19,7 +19,7 @@ We realize this by using Active Directory Certificate Services with automatic en
 
 **Design choices:**
 * **Active Directory Certificate Services**: We chose to use the Microsoft PKI since that is broadly used by large organisations. Moreover, the Windows PKI has nice integration with the Windows Certificate Store. Of course you can use your own PKI but note that you need to tweak some code in the script.
-* **MacOS/Windows**: Most organizations that give their employees a managed device have either Windows or MacOS. We are therefore focused on supporting Windows and MacOS. For future work an intern might extend this support to Linux.
+* **MacOS/Windows**: Most organizations that give their employees a managed device have either Windows or MacOS. We are therefore focused on supporting Windows and MacOS. For future work someone might extend this support to Linux.
 * **WireGuard/OpenVPN**: When trying to implement eduVPN provisioning we looked mainly at supporting WireGuard due to time constraints. If there is time left we will add support for OpenVPN.
 
 Down below we describe the steps in order to make eduVPN provisioning possible.

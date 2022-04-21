@@ -1,8 +1,8 @@
 # Introduction
 
-eduVPN is used to provide (large groups of) users a secure way to access the internet and their organisational resources. The goal of eduVPN is to replace typical closed-source VPNs with an open-source validated alternative that works seamlessly with an organisational identity environment.
+eduVPN is used to provide (large groups of) users a secure way to access the internet and their organisational resources. The goal of eduVPN is to replace typical closed-source VPNs with an open-source audited alternative that works seamlessly with an enterprise identity solution.
 
-Currently, eduVPN authorization works as follows: first, a user installs the eduVPN client on a supported device. When starting the client, the user searches for his or her organisation which opens a web page to the organisation's Identity Provider. The Identity Provider verifies the credentials of the user and if correct, sends back an OAuth token. With that OAuth token, the client application requests an OpenVPN or WireGuard configuration file. When the client receives a configuration file and client certificate back, it authenticates to either the OpenVPN or WireGuard server and establishes the connection (see the Figure below for the protocol overview).
+Currently, eduVPN authorization works as follows: first, a user installs the eduVPN client on a supported device. When starting the client, the user searches for his or her organisation which opens a web page to the organisation's Identity Provider. The Identity Provider verifies the credentials of the user and if correct, sends back an OAuth token. With that OAuth token, the client application requests an OpenVPN or WireGuard configuration file. When the client receives a configuration file, it authenticates to either the OpenVPN or WireGuard server and establishes the connection (see the Figure below for the protocol overview).
 
 ![image](https://user-images.githubusercontent.com/47246332/163787923-e73a3749-ee0f-4bf1-82f0-cb67e52a3b37.png)
 
@@ -10,6 +10,7 @@ One limitation that this authorization protocol has is that the VPN connection i
 
 Another limitation is that some organisations have set the expiration date of the configuration files to less than a day, for security reasons. As a result, eduVPN users dislike the fact that they need to log in each day. Moreover, even if the configurations have a longer expiration date, there is still user interaction needed to establish the vpn connection. This is an extra threshold before a user can use organisational resources. 
 
+# Solution
 In this document we are going to solve these limitations by making eduVPN a system VPN that is always on via provisioning. This means that instead of that the user interacts with the client to retrieve a configuration file we are going to do that via a script that runs in the background.
 
 We realize this by using Active Directory Certificate Services with automatic enrollment enabled so that every joined device retrieves a machine certificate. We use that certificate to authenticate an API call where we retrieve a WireGuard config. Next we install the WireGuard tunnel with that config. To visualise this:

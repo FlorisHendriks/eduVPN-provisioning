@@ -11,7 +11,7 @@ A limitation of this authorization protocol is that the VPN connection can only 
 Moreover, this authorization protocol can be seen as an extra threshold for the user to use the VPN. The user needs to start up the client, connect and log in (if the configuration is expired).
 
 # Solution
-In this document we are going to solve these drawbacks of the current authorization flow by making eduVPN a system VPN that is always on via provisioning. This means that instead of that the user interacts with the client to retrieve a configuration file we are going to do that via a script that runs in the background.
+In this document we are going to solve these drawbacks of the current authorization flow by making eduVPN a system VPN that is always on via provisioning. So instead of making the user interact with a eduVPN client to establish a VPN connection we are going to do that via a script that runs in the background.
 
 We realize this by using Active Directory Certificate Services with automatic enrollment enabled so that every joined device retrieves a machine certificate. We use that certificate to authenticate an API call where we retrieve a WireGuard config. Next we install the WireGuard tunnel with that config. To visualise this:
 

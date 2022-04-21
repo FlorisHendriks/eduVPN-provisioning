@@ -8,14 +8,14 @@ Currently, eduVPN authorization works as follows: first, a user installs the edu
 
 A limitation of this authorization protocol is that the VPN connection can only be established after a user logs in to the device. Many organisations offer managed devices, meaning that they are enrolled into (Azure) Active Directory. Often, organisations only allow clients through either a VPN connection to communicate with their (Azure) Active Directory in order to mitigiate potential security risks. However, this can cause problems. If a new user wants to log in to a managed device, the device needs to be able to communicate with Active Directory to verify those credentials. This is not possible because the VPN is not active yet.
 
-Moreover, this authorization protocol can be seen as an extra threshold before a user can use organisational resources. it can be Another limitation is that some organisations have set the VPN session time to less than a day, for security reasons. As a result, eduVPN users dislike the fact that they need to log in each day. Moreover, even if the configurations have a longer expiration date, there is still user interaction needed to establish the vpn connection. This is an extra threshold before a user can use organisational resources. 
+Moreover, this authorization protocol can be seen as an extra threshold for the user to access the organisational resources.  user can use organisational resources. it can be Another limitation is that some organisations have set the VPN session time to less than a day, for security reasons. As a result, eduVPN users dislike the fact that they need to log in each day. Moreover, even if the configurations have a longer expiration date, there is still user interaction needed to establish the vpn connection. This is an extra threshold before a user can use organisational resources. 
 
 # Solution
 In this document we are going to solve these drawbacks of the current authorization flow by making eduVPN a system VPN that is always on via provisioning. This means that instead of that the user interacts with the client to retrieve a configuration file we are going to do that via a script that runs in the background.
 
 We realize this by using Active Directory Certificate Services with automatic enrollment enabled so that every joined device retrieves a machine certificate. We use that certificate to authenticate an API call where we retrieve a WireGuard config. Next we install the WireGuard tunnel with that config. To visualise this:
 
-![authorizationflow drawio](https://user-images.githubusercontent.com/47246332/164429119-158a7ab6-de29-4e91-9759-f84db65f91b5.png)
+![authorizationflow drawio(1)](https://user-images.githubusercontent.com/47246332/164447445-37338b6d-efc9-4247-9c77-238b3841da26.png)
 
 **Design choices:**
 * **Active Directory Certificate Services**: We chose to use the Microsoft PKI since that is broadly used by large organisations. Moreover, the Windows PKI has nice integration with the Windows Certificate Store. Of course you can use your own PKI but note that you need to tweak some code in the script.

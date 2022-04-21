@@ -4,7 +4,8 @@ eduVPN is used to provide (large groups of) users a secure way to access the int
 
 Currently, eduVPN authorization works as follows: first, a user installs the eduVPN client on a supported device. When starting the client, the user searches for his or her organisation which opens a web page to the organisation's Identity Provider. The Identity Provider verifies the credentials of the user and notifies the OAuth server whether they are valid or not. The OAuth server then sends back an OAuth token to the user. With that OAuth token, the client application requests an OpenVPN or WireGuard configuration file. When the client receives a configuration file, it authenticates to either the OpenVPN or WireGuard server and establishes the connection (see the Figure below for the protocol overview).
 
-![image](https://user-images.githubusercontent.com/47246332/163787923-e73a3749-ee0f-4bf1-82f0-cb67e52a3b37.png)
+![authorizationflow drawio](https://user-images.githubusercontent.com/47246332/164429119-158a7ab6-de29-4e91-9759-f84db65f91b5.png)
+
 
 A limitation of this authorization protocol is that the VPN connection can only be established after a user logs in to the device. Many organisations offer managed devices, meaning that they are enrolled into (Azure) Active Directory. Often, organisations only allow clients through either a VPN connection to communicate with their (Azure) Active Directory in order to mitigiate potential security risks. However, this can cause problems. If a new user wants to log in to a managed device, the device needs to be able to communicate with Active Directory to verify those credentials. This is not possible because the VPN is not active yet.
 

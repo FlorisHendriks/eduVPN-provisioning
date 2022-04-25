@@ -10,11 +10,13 @@ if(`$service -ne `$null)
     Start-Service -InputObject `$service
 }
 
+`$sn = gwmi win32_bios | select -Expand serialnumber
+
 `$initial = `$true
 
 `$certStorePath  = `"Cert:\LocalMachine\My`"
 `$name = hostname
-`$MachineCertificate = Get-ChildItem -Path `$certStorePath | Where-Object {`$_.Subject -like `"*`$name*`"}
+`$MachineCertificate = Get-ChildItem -Path `$certStorePath | Where-Object {`$_.Subject -like `"*`$sn*`"}
 
 if(Test-Path -Path `"C:\Program Files\WireGuard\Data\wg0Expiry.txt`" -PathType Leaf)
 {

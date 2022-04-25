@@ -28,11 +28,10 @@ Down below we describe the steps in order to make eduVPN provisioning possible.
 
 # Windows
 ## Prerequisites
-* [An AD Windows server with Active Directory Certificate Services installed.](https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)
-* [Configure MDM](https://docs.microsoft.com/en-us/windows/client-management/mdm/azure-ad-and-microsoft-intune-automatic-mdm-enrollment-in-the-new-portal)
-* [Configure PKCS machine certificates with Intune.](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-pfx-configure#subject-name-format)
+* An AD Windows server with Active Directory Certificate Services installed. [Make sure that automatic enrollment of computer certificates via GPO is enabled](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11))
 * [A deployed eduVPN server that has support for provisioning](https://github.com/FlorisHendriks98/provisionPackage)
 * [Git installed](https://git-scm.com/download/win)
+* [Windows configuration designer installed](https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab)
 * [Download a WireGuard msi](https://download.wireguard.com/windows-client/)
 * A Windows client with Windows 10/11
  
@@ -88,10 +87,9 @@ You can check if the VPN tunnel is running by using the command `wg show` in an 
 
 # MacOS
 ## Prerequisites
-* [An AD Windows server with Active Directory Certificate Services installed.](https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)
-* [Configure MDM](https://docs.microsoft.com/en-us/windows/client-management/mdm/azure-ad-and-microsoft-intune-automatic-mdm-enrollment-in-the-new-portal)
-* [Configure PKCS machine certificates with Intune.](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-pfx-configure#subject-name-format)
+* [An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11))
 * [A deployed eduVPN server that has support for provisioning](https://github.com/FlorisHendriks98/provisionPackage).
+* [macOS server with profilemanager enabled](https://apps.apple.com/us/app/macos-server/id883878097?mt=12).
 * Git installed.
 * A MacOS client with Monterey installed.
 

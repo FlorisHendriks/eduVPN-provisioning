@@ -74,12 +74,13 @@ Use this PPKG file to provision multiple windows devices. You can either use it 
 You can also deploy the PPKG by using the powershell script functionality of the Microsoft Endpoint manager.
 Learn [here](https://www.anoopcnair.com/deploy-ppkg-files-with-intune/) how to do this.
 
-
 ## Step 3A
 If the computer already has joined Active directory and installed WireGuard, you can just run the eduvpnProvision.ps1 on the client computer and set it up that way. 
-Open command line as administrator and run:\
-`powershell.exe -ExecutionPolicy ByPass ./eduvpnProvision.ps1`
+Open command line as administrator and run:
 
+    powershell.exe -ExecutionPolicy ByPass ./eduvpnProvision.ps1 -p "default" -s "myserver.test.nl"
+
+Where `-p` is the profile you want to configure and `-s` the eduVPN server you want to connect to. 
 ## Step 4
 You can check if the VPN tunnel is running by using the command `wg show` in an administrator command prompt:
 ![image](https://user-images.githubusercontent.com/47246332/162983449-78ef667a-08ff-499b-ac8e-e6f941c1d10e.png)

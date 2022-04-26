@@ -1,5 +1,11 @@
+# Handle command-line arguments
+param (
+    [string]$s = "google.com",
+    [string]$p = "default"
+ )
+
 # We need to have an internet connection to be able to start a WireGuard connection.
-"while(-not ((Test-NetConnection `"vpn.strategyit.nl`").PingSucceeded))
+"while(-not ((Test-NetConnection $s).PingSucceeded))
 {
 	Start-Sleep -s 5
 }
@@ -33,9 +39,9 @@ if((`$WireguardDate -lt `$MachineCertificateDate) -or `$initial)
         Stop-Service -InputObject `$service
     }
 	
-    `$postParams = @{profile_id='default'}
+    `$postParams = @{profile_id=`"$p`"}
 
-    `$response = Invoke-WebRequest -Uri https://vpn.strategyit.nl/vpn-user-portal/api/v3/provision -Headers @{'Accept' = 'application/x-wireguard-profile'} -Body `$postParams -UseBasicParsing -Certificate `$Machinecertificate -Method Post
+    `$response = Invoke-WebRequest -Uri https://$s/vpn-user-portal/api/v3/provision -Headers @{'Accept' = 'application/x-wireguard-profile'} -Body `$postParams -UseBasicParsing -Certificate `$Machinecertificate -Method Post
     
     if(`$response.StatusCode -eq 200)
     {

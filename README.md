@@ -86,35 +86,24 @@ You can check if the VPN tunnel is running by using the command `wg show` in an 
 
 
 # macOS
-Unfortunately automatic certificate enrollment with macOS does not work. We therefore have to find a way to retrieve a machine certificate from ADCS and push it to the macOS client. Previously we solved it with using macOS server by doing a DCE / RPC call, [but as of 21 April 2022 macOS server is deprecated.](https://support.apple.com/en-us/HT208312). Apple suggests to use a third party MDM as an alternative to macOS server. We choose to use Microsoft Endpoint Manager, as it is a well established MDM provider and integrates great with ADCS.
+Unfortunately automatic certificate enrollment with macOS does not work. We therefore have to find a way to retrieve a machine certificate from ADCS and push it to the macOS client. Previously we solved it with using macOS server by doing a DCE / RPC call, [but as of 21 April 2022 macOS server is deprecated.](https://support.apple.com/en-us/HT208312) Apple suggests to use a third party MDM as an alternative to macOS server. We choose to use Microsoft Endpoint Manager (Intune), as it is a well established MDM provider and integrates great with ADCS.
 ## Prerequisites
 * [An AD Windows server with Active Directory Certificate Services installed.](https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)
+* Access to a Microsoft Endpoint Manager tenant.
 * Configure a [PKCS](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-pfx-configure) or [SCEP](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-scep-configure) machine certificate profile with Microsft Endpoint Manager for macOS devices.
 * Git installed.
 * A MacOS client with Monterey installed.
 
 ## Step 1
-Here we configure a profile for the macOS client. With this profile we enroll the macOS client in AD and retrieve a machine certificate via RPC.
+Configure [PKCS](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-pfx-configure) or [SCEP](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-scep-configure) machine certificate profile with Microsoft Endpoint Manager for macOS devices. Make sure that "subject name format" is CN={{SERIALNUMBER}} and that "allow all apps access to private key" is set to enable, e.g.:
 
-First open the my devices web application and enroll the device to macOS server.
-
-![Screenshot 2022-04-11 at 13 17 40](https://user-images.githubusercontent.com/47246332/162730069-cd00267a-0f97-4e0b-8e18-f3b848757996.png)
-
-Next open the profile manager web application and edit the following settings for a device or group of devices (make sure that the Certificate Server and the Certificate Authority has the names of your own infrastructure):
-* AD certificate
-
-![Screenshot 2022-04-11 at 13 32 43](https://user-images.githubusercontent.com/47246332/162731516-ebbc1911-e137-4344-b7ee-bccf0b7f4f03.png)
-
-* Directory (you can skip this step if the computer is already AD joined)
-
-![Screenshot 2022-04-11 at 14 52 09](https://user-images.githubusercontent.com/47246332/162743771-611df4c5-a679-447e-bedc-4ec7880cc8c0.png)
-
-Note that we use as client ID %SerialNumber%, this ensures us that we do not have a duplicate name in Active Directory (https://discussions.apple.com/thread/7987975). If you want to use a different client ID, such as the hostname of the client, then the syntax can be found here https://support.apple.com/en-gb/guide/deployment/dep23422775/web.
-
-After saving the profile configuration check if it is automatically pushed to the macOS client. If not, download and install it manually (https://support.apple.com/en-gb/guide/profile-manager/pmdbd71ebc9/mac). 
+![image](https://user-images.githubusercontent.com/47246332/165262379-8b6e84fb-f7f9-4c55-9db8-f44bff24c52d.png)
 
 ## Step 2
-Check the keychain access, you should now have a certificate with the name SERIALNUMBER.HOSTNAME. This is the machine certificate which is used to authenticate API calls in order to retrieve a VPN configuration.
+{Enroll the macos device to Microsoft Endpoint Manager with a method that is most suitable to your IT infrastructure](https://docs.microsoft.com/en-us/mem/intune/enrollment/macos-enroll).
+
+## Step 3
+Check the keychain access, you should now have a certificate with the name SERIALNUMBER. This is the machine certificate which is used to authenticate API calls in order to retrieve a VPN configuration.
 
 Open up the terminal and clone the repository:\
 `git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`

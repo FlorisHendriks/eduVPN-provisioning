@@ -88,9 +88,9 @@ You can check if the VPN tunnel is running by using the command `wg show` in an 
 # macOS
 Unfortunately automatic certificate enrollment with macOS does not work. We therefore have to find a way to retrieve a machine certificate from ADCS and push it to the macOS client. Previously we solved it with using macOS server by doing a DCE / RPC call, [but as of 21 April 2022 macOS server is deprecated.](https://support.apple.com/en-us/HT208312). Apple suggests to use a third party MDM as an alternative to macOS server. We choose to use Microsoft Endpoint Manager, as it is a well established MDM provider and integrates great with ADCS.
 ## Prerequisites
-* [An AD Windows server with Active Directory Certificate Services installed. Make sure that automatic enrollment of computer certificates via GPO is enabled](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11))
-* [A deployed eduVPN server that has support for provisioning](https://github.com/FlorisHendriks98/provisionPackage).
-* [macOS server with profilemanager enabled](https://apps.apple.com/us/app/macos-server/id883878097?mt=12).
+* [An AD Windows server with Active Directory Certificate Services installed.](https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)
+* [Configure MDM](https://docs.microsoft.com/en-us/windows/client-management/mdm/azure-ad-and-microsoft-intune-automatic-mdm-enrollment-in-the-new-portal)
+* Configure a [PKCS](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-pfx-configure) or [SCEP](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-scep-configure) machine certificate profile with Microsft Endpoint Manager.
 * Git installed.
 * A MacOS client with Monterey installed.
 

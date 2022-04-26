@@ -94,7 +94,7 @@ Unfortunately automatic certificate enrollment with macOS does not work. We ther
 * A MacOS client with Monterey installed.
 
 ## Step 1
-Configure [PKCS](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-pfx-configure) or [SCEP](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-scep-configure) machine certificate profile with Microsoft Endpoint Manager for macOS devices. Make sure that "subject name format" is CN={{SERIALNUMBER}} and that "allow all apps access to private key" is set to enable, e.g.:
+Configure a [PKCS](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-pfx-configure) or [SCEP](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-scep-configure) machine certificate profile with Microsoft Endpoint Manager for macOS devices. Make sure that "subject name format" is CN={{SERIALNUMBER}} and that "allow all apps access to private key" is set to enable, e.g.:
 
 ![image](https://user-images.githubusercontent.com/47246332/165262379-8b6e84fb-f7f9-4c55-9db8-f44bff24c52d.png)
 

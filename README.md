@@ -90,7 +90,6 @@ Unfortunately automatic certificate enrollment with macOS does not work. We ther
 ## Prerequisites
 * [An AD Windows server with Active Directory Certificate Services installed.](https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)
 * Access to a Microsoft Endpoint Manager tenant.
-* Configure a [PKCS](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-pfx-configure) or [SCEP](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-scep-configure) machine certificate profile with Microsft Endpoint Manager for macOS devices.
 * Git installed.
 * A MacOS client with Monterey installed.
 
@@ -100,10 +99,10 @@ Configure [PKCS](https://docs.microsoft.com/en-us/mem/intune/protect/certificate
 ![image](https://user-images.githubusercontent.com/47246332/165262379-8b6e84fb-f7f9-4c55-9db8-f44bff24c52d.png)
 
 ## Step 2
-{Enroll the macos device to Microsoft Endpoint Manager with a method that is most suitable to your IT infrastructure](https://docs.microsoft.com/en-us/mem/intune/enrollment/macos-enroll).
+[Enroll the macos device to Microsoft Endpoint Manager with a method that is most suitable to your IT infrastructure](https://docs.microsoft.com/en-us/mem/intune/enrollment/macos-enroll).
 
 ## Step 3
-Check the keychain access, you should now have a certificate with the name SERIALNUMBER. This is the machine certificate which is used to authenticate API calls in order to retrieve a VPN configuration.
+Check the keychain access, you should now have a certificate with the name %SERIALNUMBER%. This is the machine certificate which is used to authenticate API calls in order to retrieve a VPN configuration.
 
 Open up the terminal and clone the repository:\
 `git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`

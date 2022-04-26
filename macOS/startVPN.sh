@@ -16,10 +16,8 @@ else
         wireguardDate=$(gdate --date=$(head /etc/wireguard/expiryDate.txt) --iso-8601)
 fi
 
-domainName=$(dsconfigad -show | awk '/Active Directory Domain/{print $NF}')
-computerName=$(dsconfigad -show | awk '/Computer Account/{print $NF}')
-
-certificateName="${computerName%?}.$domainName"
+certificateName=$(ioreg -l | awk '/IOPlatformSerialNumber/{print $NF}')
+certificateName=$(echo $certificateName | tr -d '"')
 
 certificateDate=$(gdate --date="$(security find-certificate -c "$certificateName" -p | openssl x509 -noout -enddate | awk -F '=' '{print $NF}' )" --iso-8601)
 

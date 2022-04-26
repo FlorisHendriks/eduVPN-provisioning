@@ -104,26 +104,31 @@ Configure a [PKCS](https://docs.microsoft.com/en-us/mem/intune/protect/certifica
 ## Step 3
 Check the keychain access, you should now have a certificate with the name %SERIALNUMBER%. This is the machine certificate which is used to authenticate API calls in order to retrieve a VPN configuration.
 
-Open up the terminal and clone the repository:\
-`git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
+Open up the terminal and clone the repository:
 
-Install the HomeBrew package manager:\
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+    git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git
 
-Install Wireguard-tools, grep and coreutils:\
-`brew install wireguard-tools grep coreutils`
+Install the HomeBrew package manager:
 
-Traverse to the macOS directory:\
-`cd eduVPN-provisioning/macOS`
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-Run the setup.sh:\
-`sudo ./setup.sh`
+Install Wireguard-tools, grep and coreutils:
 
-Check if Wireguard is up and running:\
-`sudo wg show`
+    brew install wireguard-tools grep coreutils
+
+Traverse to the macOS directory:
+
+    cd eduVPN-provisioning/macOS
+
+Run the setup.sh:
+
+    sudo ./setup.sh
+
+Check if Wireguard is up and running:
+
+    sudo wg show
 
 If it returns a config we are all set!
-
 
 # Troubleshooting
 Here I document all my issues we encountered while exploring how to setup eduVPN provisioning and what I did to resolve them.

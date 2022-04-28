@@ -131,6 +131,11 @@ Check if Wireguard is up and running:
 
 If it returns a config we are all set!
 
+# Revoke certificate and configuration
+Whenever there is a need to revoke the system eduVPN for a computer we have to do the following:
+* [Revoke the certificate in ADCS](https://www.altaro.com/hyper-v/view-revoke-manually-approve-certificates/)
+* Either disable or delete the account in the vpn-user-portal web application. Disabling disables the ability to retrieve a WireGuard config with the certificate until you decide to enable the account again. Deleting the computer account will add the certificate to the revocation list and is not able to reuse the certificate to retrieve a WireGuard profile.
+
 # Troubleshooting
 Here I document all my issues we encountered while exploring how to setup eduVPN provisioning and what I did to resolve them.
 
@@ -139,6 +144,5 @@ The device is probably already enrolled in (Azure) Active Directory. Create the 
 
 # Future work
 * **Make a third-party MDM optional instead of mandatory**. Unfortunate for macOS we have to rely on a third party MDM in order to get the machine certificate. [Interestingly, however, there has been a github tool developed by twocanoes that does a DCE / RPC call to ADCS using a kerberos ticket.](https://twocanoes.com/ad-certificate-profile-got-macos-apple/) With that tool you are able to create a CSR on the macos device, send it to ADCS and receive a signed certificate back. Unfortunately, a limitation of this tool is that the signed certificate that is received from ADCS can only be stored in the user keychain. For future work it would be interesting to check if it is possible to store the certificate in the system keychain. This would mean that we do not have to rely on a third party MDM to get a machine certificate.
-* **Add support for OpenVPN**. Due to time constraints we only managed to support WireGuard. There all still reasons to use OpenVPN, as it still supports TCP as opposed to WireGuard.
 * **Make a UI for selecting different profiles and add support for multiple profiles**. Currently you can only manually specify the profile you want to connect with. However, it would be useful to have the ability to select multiple profiles so that the end user can choose.
 * **Add support for Linux**. We only focused on supporting Windows and macOS to make eduVPN a system VPN as those OSs are the most used by organizations. Still, there are numerous people who use Linux so it would be nice to add support for that.

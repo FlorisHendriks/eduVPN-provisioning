@@ -78,7 +78,7 @@ Learn [here](https://www.anoopcnair.com/deploy-ppkg-files-with-intune/) how to d
 If the computer already has joined Active directory and installed WireGuard, you can just run the eduvpnProvision.ps1 on the client computer and set it up that way. 
 Open command line as administrator and run:
 
-    powershell.exe -ExecutionPolicy ByPass ./eduvpnProvision.ps1 -p "default" -s "myserver.test.nl"
+    powershell.exe -ExecutionPolicy ByPass ./eduvpnProvision.ps1 -p "default" -s "vpn.example.com"
 
 Where `-p` is the profile you want to configure and `-s` the eduVPN server you want to connect to. 
 ## Step 4

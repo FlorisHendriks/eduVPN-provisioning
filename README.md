@@ -133,7 +133,7 @@ Check if Wireguard is up and running:
 If it returns a config we are all set!
 
 # Revoke machine certificate
-Whenever there is a need to revoke the system eduVPN for a computer we have to do the following:
+Whenever there is the need to revoke the system eduVPN connection for a computer we have to do the following:
 * [Revoke the certificate in ADCS](https://www.altaro.com/hyper-v/view-revoke-manually-approve-certificates/)
 * Either disable or delete the account in the vpn-user-portal web application. Disabling disables the ability to retrieve a WireGuard config with the certificate until you decide to enable the account again. Deleting the computer account will add the certificate to the revocation list and is not able to reuse the certificate to retrieve a WireGuard profile.
 

@@ -38,8 +38,9 @@ Down below we describe the steps in order to make eduVPN provisioning possible.
 Here we create a Provisioning Package ([PPKG](https://docs.microsoft.com/en-us/windows/configuration/provisioning-packages/provisioning-packages)) file with Windows Configuration Designer. With the PPKG we can join Active Directory, install Wireguard and run a script that sets up eduVPN as a system VPN.
 
 ## Step 1
-Clone the repository:\
-`git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git`
+Clone the repository:
+
+    git clone https://github.com/FlorisHendriks98/eduVPN-provisioning.git
 
 ## Step 2
 Open Windows Configuration designer and either import the example settings from eduVPN-provisioning/windowsConfigurationDesigner/exampleProject.icdproj or start a new project and specify the settings to join Active Directory:

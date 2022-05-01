@@ -33,7 +33,7 @@ Down below we describe the steps in order to make eduVPN provisioning possible.
 * [Git installed](https://git-scm.com/download/win)
 * [Windows configuration designer installed](https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab)
 * [Download a WireGuard msi](https://download.wireguard.com/windows-client/)
-* A Windows client with Windows 10/11 connected to a network that is able to communicate with Active Directory
+* A Windows device with Windows 10/11 connected to a network that is able to communicate with Active Directory
  
 Here we create a Provisioning Package ([PPKG](https://docs.microsoft.com/en-us/windows/configuration/provisioning-packages/provisioning-packages)) file with Windows Configuration Designer. With the PPKG we can join Active Directory, install Wireguard and run a script that sets up eduVPN as a system VPN.
 
@@ -94,7 +94,7 @@ Unfortunately automatic certificate enrollment with macOS does not work. We ther
 * [An AD Windows server with Active Directory Certificate Services installed.](https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)
 * Access to a Microsoft Endpoint Manager tenant.
 * Git installed.
-* A MacOS client with Monterey installed and connected to a network that is able to communicate with Active Directory.
+* A macOS device with Monterey installed and connected to a network that is able to communicate with Active Directory.
 
 ## Step 1
 Configure a [PKCS](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-pfx-configure) or [SCEP](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-scep-configure) machine certificate profile with Microsoft Endpoint Manager for macOS devices. Make sure that "subject name format" is CN={{SERIALNUMBER}} and that "allow all apps access to private key" is set to enable, e.g.:

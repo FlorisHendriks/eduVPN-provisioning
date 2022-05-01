@@ -94,7 +94,7 @@ Unfortunately automatic certificate enrollment with macOS does not work. We ther
 * [An AD Windows server with Active Directory Certificate Services installed.](https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)
 * Access to a Microsoft Endpoint Manager tenant.
 * Git installed.
-* A MacOS client with Monterey installed and connected to a network.
+* A MacOS client with Monterey installed and connected to a network that is able to communicate with Active Directory.
 
 ## Step 1
 Configure a [PKCS](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-pfx-configure) or [SCEP](https://docs.microsoft.com/en-us/mem/intune/protect/certificates-scep-configure) machine certificate profile with Microsoft Endpoint Manager for macOS devices. Make sure that "subject name format" is CN={{SERIALNUMBER}} and that "allow all apps access to private key" is set to enable, e.g.:

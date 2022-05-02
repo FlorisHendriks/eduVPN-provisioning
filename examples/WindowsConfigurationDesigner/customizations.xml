@@ -16,7 +16,7 @@
             <Account>STRATEGYIT\administrator</Account>
             <ComputerName>W10G-%RAND:5%</ComputerName>
             <DomainName>strategyit.nl</DomainName>
-            <Password>Kerstboom123</Password>
+            <Password>******</Password>
           </ComputerAccount>
         </Accounts>
         <OOBE>

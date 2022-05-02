@@ -59,7 +59,7 @@ Specify the command, which uses the WireGuard msi to install WireGuard:
 ![image](https://user-images.githubusercontent.com/47246332/162794927-89f50056-448e-45ed-abbc-826655664263.png)
 
 Finally we create another command, which provisions eduVPN. Enter a name for this command e.g. eduvpnProvision
-![image](https://user-images.githubusercontent.com/47246332/162796810-7e4da036-5c16-49a0-aa65-b085999e0661.png)
+![image](https://user-images.githubusercontent.com/47246332/166238411-03d9d5fc-095a-4fd3-99cd-d065a7405f59.png)
 Where eduVPN-provisioning\windows\eduvpnProvision.ps1 can be found in the cloned repository.
 
 Go back to ProvisioningCommmands/PrimaryContext/Command. Make sure that the WireGuard installer is above the eduvpnProvision command:

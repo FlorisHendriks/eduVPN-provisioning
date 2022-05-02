@@ -1,8 +1,12 @@
 # Handle command-line arguments
 param (
-    [string]$s = "google.com",
-    [string]$p = "default"
+    [string]$s,
+    [string]$p
  )
+if((-not($s)) -or (-not($p)))
+{
+	Throw "You did not (fully) specify the parameters -s and -p"
+}
 
 # We need to have an internet connection to be able to start a WireGuard connection.
 "while(-not ((Test-NetConnection $s).PingSucceeded))

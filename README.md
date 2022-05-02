@@ -123,10 +123,10 @@ Traverse to the macOS directory:
 
     cd eduVPN-provisioning/macOS
 
-Run the setup.sh:
+Run the setup.sh, with `-p` you must specify the VPN profile and `-s` you must specify the hostname of the VPN server:
 
-    sudo ./setup.sh
-
+    sudo ./setup.sh -p "default" -s "vpn.example.com"
+    
 Check if Wireguard is up and running:
 
     sudo wg show

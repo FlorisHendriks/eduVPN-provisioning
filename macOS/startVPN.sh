@@ -1,7 +1,21 @@
 #!/bin/bash
 
+while getopts p:s: flag
+do
+	case "${flag}" in
+		p) profile=${OPTARG};;
+		s) vpnserver=${OPTARG};;
+	esac
+done
+
+if [ -z $profile ] || [ -z $vpnserver ]
+then
+        echo "ERROR: -p and -s are mandatory arguments. See usage: https://github.com/florishendriks98/eduvpn-provisioning";
+        exit 1;
+fi
+
 # while we do not have an internet connection, we do not try to establish a vpn connection
-while ! ping -c1 -W1 vpn.strategyit.nl &> /dev/null ; do
+while ! ping -c1 -W1 $vpnserver &> /dev/null ; do
     sleep 5
 done
 
@@ -23,7 +37,7 @@ certificateDate=$(gdate --date="$(security find-certificate -c "$certificateName
 
 if ! { [ -f '/etc/wireguard/wg0.conf' ] && [ "${wireguardDate}" '>' "${certificateDate}" ]; } then
         wg-quick down wg0
-        config=$( CURL_SSL_BACKEND=secure-transport curl --cert "$certificateName" -d "profile_id=default" -H "Accept: application/x-wireguard-profile" https://vpn.strategyit.nl/vpn-user-portal/api/v3/provision )
+        config=$( CURL_SSL_BACKEND=secure-transport curl --cert "$certificateName" -d "profile_id=$profile" -H "Accept: application/x-wireguard-profile" "https://$vpnserver/vpn-user-portal/api/v3/provision")
         if [ -z "$config" ]; then
                 wg-quick up /etc/wireguard/wg0.conf
         else

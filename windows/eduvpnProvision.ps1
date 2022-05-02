@@ -1,5 +1,15 @@
+# Handle command-line arguments
+param (
+    [string]$s,
+    [string]$p
+ )
+if((-not($s)) -or (-not($p)))
+{
+	Throw "You did not (fully) specify the parameters -s and -p"
+}
+
 # We need to have an internet connection to be able to start a WireGuard connection.
-"while(-not ((Test-NetConnection `"vpn.strategyit.nl`").PingSucceeded))
+"while(-not ((Test-NetConnection $s).PingSucceeded))
 {
 	Start-Sleep -s 5
 }
@@ -10,13 +20,12 @@ if(`$service -ne `$null)
     Start-Service -InputObject `$service
 }
 
-`$sn = gwmi win32_bios | select -Expand serialnumber
 
 `$initial = `$true
 
 `$certStorePath  = `"Cert:\LocalMachine\My`"
 `$name = hostname
-`$MachineCertificate = Get-ChildItem -Path `$certStorePath | Where-Object {`$_.Subject -like `"*`$sn*`"}
+`$MachineCertificate = Get-ChildItem -Path `$certStorePath | Where-Object {`$_.Subject -like `"*`$name*`"}
 
 if(Test-Path -Path `"C:\Program Files\WireGuard\Data\wg0Expiry.txt`" -PathType Leaf)
 {
@@ -33,9 +42,9 @@ if((`$WireguardDate -lt `$MachineCertificateDate) -or `$initial)
         Stop-Service -InputObject `$service
     }
 	
-    `$postParams = @{profile_id='default'}
+    `$postParams = @{profile_id=`"$p`"}
 
-    `$response = Invoke-WebRequest -Uri https://vpn.strategyit.nl/vpn-user-portal/api/v3/provision -Headers @{'Accept' = 'application/x-wireguard-profile'} -Body `$postParams -UseBasicParsing -Certificate `$Machinecertificate -Method Post
+    `$response = Invoke-WebRequest -Uri https://$s/vpn-user-portal/api/v3/provision -Headers @{'Accept' = 'application/x-wireguard-profile'} -Body `$postParams -UseBasicParsing -Certificate `$Machinecertificate -Method Post
     
     if(`$response.StatusCode -eq 200)
     {
@@ -56,9 +65,12 @@ $triggerStartup = New-ScheduledTaskTrigger -AtStartup
 
 $triggers = @($triggerDaily,$triggerStartup)
 
+# We also want our script to run when we are on batteries
+$runOnBatteries = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries
+
 $user= "NT AUTHORITY\SYSTEM" # Specify the account to run the script, in our case the System User
 $action= New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-executionpolicy bypass -File `"C:\Program Files\WireGuard\Data\wireguardRenewal.ps1`"" # Specify what program to run and with its parameters
-Register-ScheduledTask -TaskName "RenewalVpnConfig" -Trigger $triggers -User $user -Action $action -RunLevel Highest -Force # Specify the name of the task
+Register-ScheduledTask -TaskName "RenewalVpnConfig" -Settings $runOnBatteries -Trigger $triggers -User $user -Action $action -RunLevel Highest -Force # Specify the name of the task
 
 # Run the task
 Start-ScheduledTask -TaskName "RenewalVpnConfig"

@@ -29,6 +29,7 @@ Down below we describe the steps in order to make eduVPN provisioning possible.
 # Windows
 ## Prerequisites
 * An AD Windows server with Active Directory Certificate Services installed. [Make sure that automatic enrollment of computer certificates via GPO is enabled](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11))
+* Deploy and configure an OCSP Responder ([e.g. one from Microsoft](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/implementing-an-ocsp-responder-part-i-introducing-ocsp/ba-p/396493)) 
 * [A deployed eduVPN server that has support for provisioning](https://github.com/FlorisHendriks98/provisionPackage)
 * [Git installed](https://git-scm.com/download/win)
 * [Windows configuration designer installed](https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab)
@@ -93,6 +94,7 @@ You can check if the VPN tunnel is running by using the command `wg show` in an 
 Unfortunately automatic certificate enrollment with macOS does not work. We therefore have to find a way to retrieve a machine certificate from ADCS and push it to the macOS client. Previously we solved it with using macOS server by doing a [DCE / RPC call](https://support.apple.com/en-us/HT204602), [but as of 21 April 2022 macOS server is deprecated.](https://support.apple.com/en-us/HT208312) Apple suggests to use a third party MDM as an alternative to macOS server. We choose to use Microsoft Endpoint Manager (Intune), as it is a well established MDM provider and integrates great with ADCS.
 ## Prerequisites
 * [An AD Windows server with Active Directory Certificate Services installed.](https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)
+* Deploy and configure an OCSP Responder ([e.g. one from Microsoft](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/implementing-an-ocsp-responder-part-i-introducing-ocsp/ba-p/396493)) 
 * Access to a Microsoft Endpoint Manager tenant.
 * Git installed.
 * A macOS device with Monterey installed and connected to a network that is able to communicate with Active Directory.

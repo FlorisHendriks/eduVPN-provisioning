@@ -151,5 +151,12 @@ The device is probably already enrolled in (Azure) Active Directory. Create the 
 
 # Future work
 * **Make a third-party MDM optional instead of mandatory**. Unfortunate for macOS we have to rely on a third party MDM in order to get the machine certificate. [Interestingly, however, there has been a github tool developed by twocanoes that does a DCE / RPC call to ADCS using a kerberos ticket.](https://twocanoes.com/ad-certificate-profile-got-macos-apple/) With that tool you are able to create a CSR on the macos device, send it to ADCS and receive a signed certificate back. Unfortunately, a limitation of this tool is that the signed certificate that is received from ADCS can only be stored in the user keychain. For future work it would be interesting to check if it is possible to store the certificate in the system keychain. This would mean that we do not have to rely on a third party MDM to get a machine certificate.
+
+Suppose an organisation does not want to rely on ADCS, an MDM provider or an OCSP provider. In that case, it might also be worthwhile to offer Kerberos authentication as an alternative to certificate authentication. When we log in to a Windows or macOS AD joined device, we receive a Kerberos ticket from AD. We can use that ticket to authenticate to the eduVPN server and receive a WireGuard configuration file. If the WireGuard configuration file is going to
+expire, we try to renew it 6 weeks before the expiry date with a new
+Kerberos ticket. The Kerberos authentication flow would look like this:
+
+![image](https://user-images.githubusercontent.com/47246332/167087818-89b8c977-75cc-4d37-934e-d7c6c3bcd0d7.png)
+
 * **Make a UI for selecting different profiles and add support for multiple profiles**. Currently you can only manually specify the profile you want to connect with. However, it would be useful to have the ability to select multiple profiles so that the end user can choose.
 * **Add support for Linux**. We only focused on supporting Windows and macOS to make eduVPN a system VPN as those OSs are the most used by organizations. Still, there are numerous people who use Linux so it would be nice to add support for that.

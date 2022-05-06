@@ -154,7 +154,7 @@ The device is probably already enrolled in (Azure) Active Directory. Create the 
 
 Suppose an organisation does not want to rely on ADCS, an MDM provider or an OCSP provider. In that case, it might also be worthwhile to offer Kerberos authentication as an alternative to certificate authentication. When we log in to a Windows or macOS AD joined device, we receive a Kerberos ticket from AD. We can use that ticket to authenticate to the eduVPN server and receive a WireGuard configuration file. If the WireGuard configuration file is going to
 expire, we try to renew it 6 weeks before the expiry date with a new
-Kerberos ticket. The Kerberos authentication flow would look like this:
+Kerberos ticket. A visualisation of the Kerberos authentication flow would look like this:
 
 ![image](https://user-images.githubusercontent.com/47246332/167087818-89b8c977-75cc-4d37-934e-d7c6c3bcd0d7.png)
 

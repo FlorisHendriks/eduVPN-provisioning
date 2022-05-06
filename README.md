@@ -140,7 +140,7 @@ If it returns a config we are all set!
 Whenever there is the need to revoke the system eduVPN connection for a computer we have to do the following:
 * [Revoke the certificate in ADCS](https://www.altaro.com/hyper-v/view-revoke-manually-approve-certificates/). This does not immediately revoke the machine certificate as the OCSP responder does not have the updated Certificate Revocation List (CRL). However, we can make it as fast as possible by publishing the CRL list manually. We realize this by using `certutil -CRL` in the command line on the server where the OCSP responder is deployed.
 * Either disable or delete the account in the vpn-user-portal web application. Disabling or deleting the account invalidates the account's current and future established VPN connections.
-![disableAccount](https://user-images.githubusercontent.com/47246332/165917833-5e850350-c6e5-4126-bf5c-9f738710d2b6.png)
+![disableAccount](https://user-images.githubusercontent.com/47246332/167130651-8598540e-2f4f-4e8a-8b4c-ad3c449674d0.png)
 
 
 # Troubleshooting

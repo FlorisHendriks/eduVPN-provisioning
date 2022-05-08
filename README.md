@@ -29,7 +29,6 @@ Down below we describe the steps in order to make eduVPN provisioning possible.
 # Windows
 ## Prerequisites
 * An AD Windows server with Active Directory Certificate Services installed. [Make sure that automatic enrollment of computer certificates via GPO is enabled](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj129705(v=ws.11))
-* Deploy and configure an OCSP Responder ([e.g. one from Microsoft](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/implementing-an-ocsp-responder-part-i-introducing-ocsp/ba-p/396493)) 
 * [A deployed eduVPN server that has support for provisioning](https://github.com/FlorisHendriks98/provisionPackage)
 * [Git installed](https://git-scm.com/download/win)
 * [Windows configuration designer installed](https://www.microsoft.com/nl-nl/p/windows-configuration-designer/9nblggh4tx22?rtc=1#activetab=pivot:overviewtab)
@@ -94,7 +93,6 @@ You can check if the VPN tunnel is running by using the command `wg show` in an 
 Unfortunately automatic certificate enrollment with macOS does not work. We therefore have to find a way to retrieve a machine certificate from ADCS and push it to the macOS client. Previously we solved it with using macOS server by doing a [DCE / RPC call](https://support.apple.com/en-us/HT204602), [but as of 21 April 2022 macOS server is deprecated.](https://support.apple.com/en-us/HT208312) Apple suggests to use a third party MDM as an alternative to macOS server. We choose to use Microsoft Endpoint Manager (Intune), as it is a well established MDM provider and integrates great with ADCS.
 ## Prerequisites
 * [An AD Windows server with Active Directory Certificate Services installed.](https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)
-* Deploy and configure an OCSP Responder ([e.g. one from Microsoft](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/implementing-an-ocsp-responder-part-i-introducing-ocsp/ba-p/396493)) 
 * Access to a Microsoft Endpoint Manager tenant.
 * Git installed.
 * A macOS device with Monterey installed and connected to a network that is able to communicate with Active Directory.
@@ -138,9 +136,10 @@ If it returns a config we are all set!
 
 # Revoke machine certificate
 Whenever there is the need to revoke the system eduVPN connection for a computer we have to do the following:
-* [Revoke the certificate in ADCS](https://www.altaro.com/hyper-v/view-revoke-manually-approve-certificates/). This does not immediately revoke the machine certificate as the OCSP responder does not have the updated Certificate Revocation List (CRL). However, we can make it as fast as possible by publishing the CRL list manually. We realize this by using `certutil -CRL` in the command line on the server where the OCSP responder is deployed.
-* Either disable or delete the account in the vpn-user-portal web application. Disabling or deleting the account invalidates the account's current and future established VPN connections.
-![disableAccount](https://user-images.githubusercontent.com/47246332/167130651-8598540e-2f4f-4e8a-8b4c-ad3c449674d0.png)
+* [Revoke the certificate in ADCS](https://www.altaro.com/hyper-v/view-revoke-manually-approve-certificates/)
+* Either disable or delete the account in the vpn-user-portal web application. Disabling disables the ability to retrieve a WireGuard config with the certificate until you decide to enable the account again. Deleting the computer account will add the certificate to the revocation list and is not able to reuse the certificate to retrieve a WireGuard configuration.
+
+![disableAccount](https://user-images.githubusercontent.com/47246332/167292212-10f6d6bb-90c9-4970-9b4e-87ede561bb00.png)
 
 
 # Troubleshooting
@@ -151,12 +150,5 @@ The device is probably already enrolled in (Azure) Active Directory. Create the 
 
 # Future work
 * **Make a third-party MDM optional instead of mandatory**. Unfortunate for macOS we have to rely on a third party MDM in order to get the machine certificate. [Interestingly, however, there has been a github tool developed by twocanoes that does a DCE / RPC call to ADCS using a kerberos ticket.](https://twocanoes.com/ad-certificate-profile-got-macos-apple/) With that tool you are able to create a CSR on the macos device, send it to ADCS and receive a signed certificate back. Unfortunately, a limitation of this tool is that the signed certificate that is received from ADCS can only be stored in the user keychain. For future work it would be interesting to check if it is possible to store the certificate in the system keychain. This would mean that we do not have to rely on a third party MDM to get a machine certificate.
-
-* **Implement Kerberos authentication**. Suppose an organisation does not want to rely on ADCS, an MDM provider or an OCSP provider. In that case, it might also be worthwhile to offer Kerberos authentication as an alternative to certificate authentication. When we log in to a Windows or macOS AD joined device, we receive a Kerberos ticket from AD. We can use that ticket to authenticate to the eduVPN server and receive a WireGuard configuration file. If the WireGuard configuration file is going to
-expire, we try to renew it 6 weeks before the expiry date with a new
-Kerberos ticket. A visualisation of the Kerberos authentication flow would look like this:
-
-![image](https://user-images.githubusercontent.com/47246332/167087818-89b8c977-75cc-4d37-934e-d7c6c3bcd0d7.png)
-
 * **Make a UI for selecting different profiles and add support for multiple profiles**. Currently you can only manually specify the profile you want to connect with. However, it would be useful to have the ability to select multiple profiles so that the end user can choose.
 * **Add support for Linux**. We only focused on supporting Windows and macOS to make eduVPN a system VPN as those OSs are the most used by organizations. Still, there are numerous people who use Linux so it would be nice to add support for that.

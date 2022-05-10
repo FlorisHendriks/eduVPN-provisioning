@@ -136,7 +136,7 @@ If it returns a config we are all set!
 
 # Revoke machine certificate
 Whenever there is the need to revoke the system eduVPN connection for a computer we have to do the following:
-* [Revoke the certificate in ADCS](https://www.altaro.com/hyper-v/view-revoke-manually-approve-certificates/)
+* Disable the computer account in AD for windows and in the MDM provider for macOS, otherwise the certificates will be renewed.
 * Either disable or delete the account in the vpn-user-portal web application. Disabling disables the ability to retrieve a WireGuard config with the certificate until you decide to enable the account again. Deleting the computer account will add the certificate to the revocation list and is not able to reuse the certificate to retrieve a WireGuard configuration.
 
 ![disableAccount](https://user-images.githubusercontent.com/47246332/167292212-10f6d6bb-90c9-4970-9b4e-87ede561bb00.png)

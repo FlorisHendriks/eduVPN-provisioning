@@ -9,7 +9,7 @@ if((-not($s)) -or (-not($p)))
 }
 
 # We need to have an internet connection to be able to start a WireGuard connection.
-"while(-not ((Test-NetConnection $s).PingSucceeded))
+"while(-not (Test-Connection $s -Quiet -Count 1))
 {
 	Start-Sleep -s 5
 }
